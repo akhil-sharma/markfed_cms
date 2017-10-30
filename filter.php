@@ -57,6 +57,7 @@ $result ='';
 
 <html>
 <head>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" /> 
   
@@ -194,7 +195,7 @@ function findString () {
   <form class="form-horizontal" action="filter.php" method="POST">
     <div class="form-group">
       <div class="col-sm-2"></div>
-      <label class="control-label col-sm-2" for="FileNumber">File Number: <input type="radio" name="choice" value="FileNumber" <?php if(isset($_POST['choice'])) {if($_POST['choice'] == 'FileNumber')  echo "checked = \"checked\""; }?>></label>
+      <label class="control-label col-sm-2" for="FileNumber">File Number: &nbsp;<input type="radio" name="choice" value="FileNumber" <?php if(isset($_POST['choice'])) {if($_POST['choice'] == 'FileNumber')  echo "checked = \"checked\""; }?>></label>
       <div class="col-sm-6">
         <input type="text" class="form-control file" id="FileNumber" placeholder="Enter File Number" name="FileNumber">
       </div>
@@ -211,7 +212,7 @@ function findString () {
 
     <div class="form-group">
       <div class="col-sm-2"></div>
-      <label class="control-label col-sm-2" for="CourtName">Court Name: <input type="radio" name="choice" value="CourtName" <?php if(isset($_POST['choice'])) {if($_POST['choice'] == 'CourtName')  echo "checked = \"checked\""; }?>></label>
+      <label class="control-label col-sm-2" for="CourtName">Court Name: &nbsp;&nbsp;<input type="radio" name="choice" value="CourtName" <?php if(isset($_POST['choice'])) {if($_POST['choice'] == 'CourtName')  echo "checked = \"checked\""; }?>></label>
       <div class="col-sm-6">          
         <input type="text" class="form-control court" id="CourtName" placeholder="Enter Court Name" name="CourtName">
       </div>
@@ -220,7 +221,7 @@ function findString () {
 
     <div class="form-group">
       <div class="col-sm-2"></div>
-      <label class="control-label col-sm-2" for="Date">Next Hearing<br>&nbsp;&nbsp;&nbsp;&nbsp;Between: <input type="radio" name="choice" value="Date" <?php if(isset($_POST['choice'])) {if($_POST['choice'] == 'Date')  echo "checked = \"checked\""; }?>></label>
+      <label class="control-label col-sm-2" for="Date">Next Hearing<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Between: <input type="radio" name="choice" value="Date" <?php if(isset($_POST['choice'])) {if($_POST['choice'] == 'Date')  echo "checked = \"checked\""; }?>></label>
       <div class="col-sm-3">          
         <input type="date" class="form-control" id="SDate" placeholder="Enter Starting Date" name="SDate">
       </div> -

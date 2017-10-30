@@ -10,6 +10,7 @@ require('connection.php');
 
 <html>
 <head>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" /> 
   

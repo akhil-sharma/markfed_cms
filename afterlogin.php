@@ -3,6 +3,7 @@
 if($_SESSION['username']){?>
 <html>
 <head>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   <link rel="stylesheet" href="css/style.css">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -143,11 +144,12 @@ function openCity(evt, cityName) {
 <div class="tab">
   <button class="tablinks active" onclick="openCity(event, 'CaseInfo')" id="defaultOpen" active>CaseInfo</button>
   <!-- <button class="tablinks" onclick="openCity(event, 'CaseProceeding')">CaseProceeding</button> -->
-  <button class="tablinks" onclick="openCity(event, 'CaseUpdateLog')">CaseUpdateLog</button>
+  
   <button class="tablinks" onclick="openCity(event, 'DateInfo')">DateInfo</button>
   <button class="tablinks" onclick="openCity(event, 'LatestProceeding')">LatestProceeding</button>
   <button class="tablinks" onclick="openCity(event, 'Lawyer')">Lawyer</button>
   <button class="tablinks" onclick="openCity(event, 'PetitionerRespondantInfo')">PetitionerRespondantInfo</button>
+  <button class="tablinks" onclick="openCity(event, 'CaseUpdateLog')">CaseUpdateLog</button>
   
 </div>
 </div>
@@ -387,7 +389,7 @@ if ($result->num_rows > 0) {
 //     die("Connection failed: " . $connection->connect_error);
 // } 
 
- $sql = "SELECT * FROM `case_update_log`";
+ $sql = "SELECT * FROM `date_info`";
 $result = $connection->query($sql);
 
 if ($result->num_rows > 0) {
@@ -592,7 +594,7 @@ if ($result->num_rows > 0) {
 //     die("Connection failed: " . $connection->connect_error);
 // } 
 
- $sql = "SELECT * FROM `case_update_log`";
+ $sql = "SELECT * FROM `petitioner_respondent_info`";
 $result = $connection->query($sql);
 
 if ($result->num_rows > 0) {
@@ -608,12 +610,12 @@ if ($result->num_rows > 0) {
           <th style="padding-left: 1vmax; padding-right: 1vmax;">Petitioner's Email</th>
           
           <th style="padding-left: 1vmax; padding-right: 1vmax;">Petitioner's Address</th>
-          <th style="padding-left: 1vmax; padding-right: 1vmax;">Petitioner's File Type</th>
+          
           <th style="padding-left: 1vmax; padding-right: 1vmax;">Respondent's Name</th>
           <th style="padding-left: 1vmax; padding-right: 1vmax;">Respondent's Email</th>
           
           <th style="padding-left: 1vmax; padding-right: 1vmax;">Respondent's Address</th>
-          <th style="padding-left: 1vmax; padding-right: 1vmax;">Respondent's File Type</th>
+          
           
         </tr>
 
@@ -626,15 +628,15 @@ if ($result->num_rows > 0) {
         <tr style="padding: 1%; margin:1%;">
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["file_number"]; ?></td>
           
-          <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["petitioner_number"]; ?></td>
+          <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["petitioner_name"]; ?></td>
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["petitioner_email"]; ?></td>
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["petitioner_address"]; ?></td>
-          <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["petitioner_file_type"]; ?></td>
+         
 
-          <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["respondent_number"]; ?></td>
+          <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["respondent_name"]; ?></td>
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["respondent_email"]; ?></td>
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["respondent_address"]; ?></td>
-          <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["respondent_file_type"]; ?></td>
+          
           
          
         </tr>

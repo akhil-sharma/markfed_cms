@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Markfed</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta charset="utf-8">

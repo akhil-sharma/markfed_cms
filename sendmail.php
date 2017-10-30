@@ -6,7 +6,11 @@
 	$body = $_POST['body'];
 
 
-$headers = "From: anubhav.gupta97@gmail.com";
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";
+$headers .= "From: successive.testing@gmail.com" . "\r\n" .
+"Reply-To: successive.testing@gmail.com" . "\r\n" .
+"X-Mailer: PHP/" . phpversion();
 
 mail($email,$subject,$body,$headers);
 

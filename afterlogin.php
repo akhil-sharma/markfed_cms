@@ -245,7 +245,7 @@ if ($result->num_rows > 0) {
 //     die("Connection failed: " . $connection->connect_error);
 // } 
 
- $sql = "SELECT * FROM `case_update_log`";
+ $sql = "SELECT * FROM `case_update_log` order by `case_update_log`.`time` desc";
 $result = $connection->query($sql);
 
 if ($result->num_rows > 0) {

@@ -6,7 +6,7 @@
 	$body = $_POST['body'];
 
 
-$headers = "From: Administrator@marked.com";
+$headers = "From: anubhav.gupta97@gmail.com";
 
 mail($email,$subject,$body,$headers);
 

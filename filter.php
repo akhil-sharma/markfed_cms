@@ -195,7 +195,7 @@ function findString () {
   <form class="form-horizontal" action="filter.php" method="POST">
     <div class="form-group">
       <div class="col-sm-2"></div>
-      <label class="control-label col-sm-2" for="FileNumber">File Number: &nbsp;<input type="radio" name="choice" value="FileNumber" <?php if(isset($_POST['choice'])) {if($_POST['choice'] == 'FileNumber')  echo "checked = \"checked\""; }?>></label>
+      <label class="control-label col-sm-2" for="FileNumber">File Number: &nbsp;<input type="radio" name="choice" value="FileNumber" checked="checked" <?php if(isset($_POST['choice'])) {if($_POST['choice'] == 'FileNumber')  echo "checked = \"checked\""; }?>></label>
       <div class="col-sm-6">
         <input type="text" class="form-control file" id="FileNumber" placeholder="Enter File Number" name="FileNumber">
       </div>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +5,10 @@
   <link rel="stylesheet" href="css/style.css">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 
 
 	<title>Admin Panel</title>
@@ -67,13 +68,13 @@ function findString () {
 <form style="margin-top: 7%;" action="sendmail.php" method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <label for="exampleFormControlInput1">Email address (To):</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
   </div>
 
 
   <div class="form-group">
     <label for="exampleFormControlInput1">Cc:</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="cc">
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="cc">
   </div>
 
   <div class="form-group">
@@ -85,6 +86,15 @@ function findString () {
     <label for="exampleFormControlTextarea1">Body:</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
   </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0//js/froala_editor.pkgd.min.js"></script>
+    <script>
+        $(function() {
+  			$('textarea#exampleFormControlTextarea1').froalaEditor()
+		});	
+    </script>
+
 <hr>
 
 

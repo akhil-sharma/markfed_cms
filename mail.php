@@ -73,10 +73,10 @@
     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Email Subject" name="subject">
   </div>
   
-  <div class="form-group">
+  <!--<div class="form-group">-->
     <label for="exampleFormControlTextarea1">Body:</label>
-    <textarea class="form-control content" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
-  </div>
+    <textarea class="content" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
+  <!--</div>-->
           
     <script>
      $(document).ready(function() {

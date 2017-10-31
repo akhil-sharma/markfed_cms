@@ -66,7 +66,7 @@ function findString () {
 <div class="container">
 <form style="margin-top: 7%;" action="sendmail.php" method="POST">
   <div class="form-group">
-    <label for="exampleFormControlInput1">Email address</label>
+    <label for="exampleFormControlInput1">Email address (To):</label>
     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
   </div>
 
@@ -76,28 +76,23 @@ function findString () {
     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="cc">
   </div>
 
-  
-
-
-
-
   <div class="form-group">
-    <label for="exampleFormControlInput1">Subject</label>
+    <label for="exampleFormControlInput1">Subject:</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Email Subject" name="subject">
   </div>
   
   <div class="form-group">
-    <label for="exampleFormControlTextarea1">Body</label>
+    <label for="exampleFormControlTextarea1">Body:</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
   </div>
 <hr>
 
-
+<!-- 
 
 <div class="form-group">
     <label for="exampleFormControlInput1">Attachment:</label>
     <input type="file" class="form-control" id="exampleFormControlInput1" name="attachment">
-  </div>
+  </div> -->
 
 
   <button type="submit" class="btn btn-default" id="myButton">SEND</button>

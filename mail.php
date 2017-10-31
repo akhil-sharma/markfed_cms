@@ -67,13 +67,13 @@ function findString () {
 <form style="margin-top: 7%;" action="sendmail.php" method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <label for="exampleFormControlInput1">Email address (To):</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
   </div>
 
 
   <div class="form-group">
     <label for="exampleFormControlInput1">Cc:</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="cc">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="cc">
   </div>
 
   <div class="form-group">

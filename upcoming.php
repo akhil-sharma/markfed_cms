@@ -10,6 +10,12 @@ require('connection.php');
 
 <html>
 <head>
+ <script>
+   function submit(){
+document.getElementById("theForm").submit();
+}
+
+ </script>
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" /> 
@@ -118,10 +124,47 @@ function findString () {
     </ul>
   </div>
 </nav></section>
+
+
+
+<div class="container">
+  <form class="form-horizontal" method="POST" id="theForm">
+    <div class="form-group" style="margin: 0 auto;">
+      
+      <label class="control-label col-sm-2" for="Days">Day Interval: </label>
+      <div class="col-sm-6">
+        <select name="days" onchange="submit();">
+          <option selected="selected" disabled="">select</option>
+      <option value="1">1 Day</option>
+      <option value="7">A Week</option>
+      <option value="15">A Fortnight</option>
+
+    </select>
+      
+<!-- <button type="submit" class="btn btn-default" style="height: 2em;">Submit</button> -->
+</div></div>
+  </form>
+</div>
+
+
+<?php
+
+if(!isset($_POST['days'])){
+
+$day_int = 1;
+  }
+if(isset($_POST['days'])){
+$day = $_POST['days'];
+$day_int = (int)$day;
+}
+?>
+
+
 <div class="container" id="beauty">
 
 
 <h1><b><center>Upcoming Cases</center></b></h1>
+<h4><i><center><?php echo "Day Interval: ".$day_int." days" ?></center> </i></h4>
 <hr style="color:black;">
 
 
@@ -137,7 +180,10 @@ function findString () {
 <?php
 
 
-$sql = "SELECT file_number, next_hearing_on, lawyer, proceeding_number FROM latest_proceeding natural join case_info WHERE next_hearing_on <= CURDATE()+2 and next_hearing_on >= CURDATE()";
+
+
+
+$sql = "SELECT file_number, next_hearing_on, lawyer, proceeding_number FROM latest_proceeding natural join case_info WHERE next_hearing_on <= (DATE_ADD(CURRENT_DATE,INTERVAL + $day_int DAY)) and next_hearing_on >= CURDATE()";
 
 $result = $connection->query($sql);
 
@@ -165,7 +211,8 @@ if ($result->num_rows > 0) {
     </tr>
     
   <?php
-}
+}}
+
 ?>
   
 
@@ -177,7 +224,7 @@ if ($result->num_rows > 0) {
 </html>
 
 <?php
-}}
+}
 else{
   header("location:index.php");
 }

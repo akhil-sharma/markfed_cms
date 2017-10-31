@@ -75,7 +75,7 @@
   
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Body:</label>
-    <textarea class="content" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
+    <textarea class="form-control content" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
   </div>
           
     <script>

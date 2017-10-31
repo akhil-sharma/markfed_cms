@@ -12,50 +12,10 @@
     <script src="jquery.richtext.js"></script>
 
 	<title>Admin Panel</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  
 
-  <script src="http://bio.mq.edu.au/Tools/jquery/plugins/riklomas-quicksearch/jquery.quicksearch.js"></script>
-
-  <script>
-   var TRange=null;
-
-function findString () {
-  var str=document.getElementById('searcher').value;
- if (parseInt(navigator.appVersion)<4) return;
- var strFound;
- if (window.find) {
-
-  // CODE FOR BROWSERS THAT SUPPORT window.find
-
-  strFound=self.find(str);
-  if (!strFound) {
-   strFound=self.find(str,0,1);
-   while (self.find(str,0,1)) continue;
-  }
- }
- else if (navigator.appName.indexOf("Microsoft")!=-1) {
-
-  // EXPLORER-SPECIFIC CODE
-
-  if (TRange!=null) {
-   TRange.collapse(false);
-   strFound=TRange.findText(str);
-   if (strFound) TRange.select();
-  }
-  if (TRange==null || strFound==0) {
-   TRange=self.document.body.createTextRange();
-   strFound=TRange.findText(str);
-   if (strFound) TRange.select();
-  }
- }
- else if (navigator.appName=="Opera") {
-  alert ("Opera browsers not supported, sorry...")
-  return;
- }
- if (!strFound) alert ("String '"+str+"' not found!")
- return;
-}
-  </script>
+  
   
 
 	
@@ -64,6 +24,37 @@ function findString () {
   
 </head>
 <body>
+	<section>
+<nav class="navbar navbar-inverse" style="width: 100vmax;">
+  <div class="container">
+    <!-- <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div> -->
+    <ul class="nav navbar-nav">
+      <li><a href="index.php">Home</a></li>
+      
+      <li class="active"><a href="#">Filter Based Search</a></li>
+      <li><a href="upcoming.php">Upcoming Events</a></li>
+      <li><a href="#">Mail</a></li>
+    </ul>
+    <div id="searchForm" class="navbar-form navbar-left">
+      <div class="input-group">
+        <input type="text" id="searcher" class="form-control" placeholder="Search on this page" name="searcher">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit" onclick="findString();" style="height:2.4em;">
+        <i class="glyphicon glyphicon-search"></i>
+        </div>
+      </div>
+    </div>
+
+     <ul class="nav navbar-nav navbar-right">
+      
+      <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav></section>
+
+		
 <div class="container">
 <form style="margin-top: 7%;" action="sendmail.php" method="POST" enctype="multipart/form-data">
   <div class="form-group">

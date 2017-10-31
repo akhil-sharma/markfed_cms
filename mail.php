@@ -6,9 +6,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="richtext.min.css">
 
 
 	<title>Admin Panel</title>
@@ -84,15 +83,12 @@ function findString () {
   
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Body:</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
+    <textarea class="form-control" class="content" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
   </div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0//js/froala_editor.pkgd.min.js"></script>
+    <script type="text/javascript" src="jquery.richtext.min.js"></script>
     <script>
-        $(function() {
-  			$('textarea#exampleFormControlTextarea1').froalaEditor()
-		});	
+		$('.content').richText();	
     </script>
 
 <hr>

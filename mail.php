@@ -6,8 +6,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="richtext.min.css">
+    <link rel="stylesheet" href="richtext.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="jquery.richtext.js"></script>
+
 
 
 	<title>Admin Panel</title>
@@ -85,10 +87,11 @@ function findString () {
     <label for="exampleFormControlTextarea1">Body:</label>
     <textarea class="form-control" class="content" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
   </div>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script type="text/javascript" src="jquery.richtext.min.js"></script>
+          
     <script>
-		$('.content').richText();	
+     $(document).ready(function() {
+     $('.content').richText();
+     });
     </script>
 
 <hr>

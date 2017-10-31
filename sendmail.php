@@ -51,7 +51,8 @@ $ccEmailCount = count($ccEmailList);
 //subject
 $subject = $_POST['subject'];
 //body
-$body = $_POST['body'];
+$result = $_POST['body'];
+$body = nl2br(str_replace(' ', '&nbsp;', $stringVariable));
 
 
 

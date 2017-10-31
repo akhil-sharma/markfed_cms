@@ -13,11 +13,6 @@ $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["attachment"]["name"]);
 $uploadOk = 1;
 
-// Check if file already exists
-if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}
 // Check for empty file
 if ($_FILES["attachment"]["size"] == 0) {
     echo "Sorry, your file is surprisingly unnecessarily small.";

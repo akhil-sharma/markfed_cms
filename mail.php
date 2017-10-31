@@ -33,9 +33,9 @@
     <ul class="nav navbar-nav">
       <li><a href="index.php">Home</a></li>
       
-      <li class="active"><a href="#">Filter Based Search</a></li>
+      <li><a href="#">Filter Based Search</a></li>
       <li><a href="upcoming.php">Upcoming Events</a></li>
-      <li><a href="#">Mail</a></li>
+      <li class="active"><a href="#">Mail</a></li>
     </ul>
     <div id="searchForm" class="navbar-form navbar-left">
       <div class="input-group">
@@ -75,7 +75,7 @@
   
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Body:</label>
-    <textarea class="form-control" class="content" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
+    <textarea class="form-control content" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
   </div>
           
     <script>

@@ -169,6 +169,7 @@ function findString () {
       
       <li class="active"><a href="#">Filter Based Search</a></li>
       <li><a href="upcoming.php">Upcoming Events</a></li>
+      <li><a href="mail.php">Mail</a></li>
     </ul>
     <div id="searchForm" class="navbar-form navbar-left">
       <div class="input-group">

@@ -72,35 +72,33 @@ function findString () {
 
 
   <div class="form-group">
+    <label for="exampleFormControlInput1">Cc:</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="cc">
+  </div>
+
+  
+
+
+
+
+  <div class="form-group">
     <label for="exampleFormControlInput1">Subject</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Email Subject" name="subject">
   </div>
-  <!-- <div class="form-group">
-    <label for="exampleFormControlSelect1">Example select</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div> -->
-
-
-  <!-- <div class="form-group">
-    <label for="exampleFormControlSelect2">Select Emails</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2" name="email">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div> -->
+  
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Body</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
   </div>
+<hr>
+
+
+
+<div class="form-group">
+    <label for="exampleFormControlInput1">Attachment:</label>
+    <input type="file" class="form-control" id="exampleFormControlInput1" name="attachment">
+  </div>
+
 
   <button type="submit" class="btn btn-default" id="myButton">SEND</button>
 </form>

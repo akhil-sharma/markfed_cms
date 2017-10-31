@@ -2,7 +2,7 @@
 <html>
 <head>
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-  <!--<link rel="stylesheet" href="css/style.css">-->
+  <link rel="stylesheet" href="css/style.css">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,10 +73,10 @@
     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Email Subject" name="subject">
   </div>
   
-  <!--<div class="form-group">-->
+  <div class="form-group">
     <label for="exampleFormControlTextarea1">Body:</label>
-    <textarea class="content" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
-  <!--</div>-->
+    <textarea class="form-control content" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
+  </div>
           
     <script>
      $(document).ready(function() {

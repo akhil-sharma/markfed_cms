@@ -64,7 +64,7 @@ function findString () {
 </head>
 <body>
 <div class="container">
-<form style="margin-top: 7%;" action="sendmail.php" method="POST">
+<form style="margin-top: 7%;" action="sendmail.php" method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <label for="exampleFormControlInput1">Email address (To):</label>
     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
@@ -87,12 +87,12 @@ function findString () {
   </div>
 <hr>
 
-<!-- 
+
 
 <div class="form-group">
     <label for="exampleFormControlInput1">Attachment:</label>
     <input type="file" class="form-control" id="exampleFormControlInput1" name="attachment">
-  </div> -->
+  </div>
 
 
   <button type="submit" class="btn btn-default" id="myButton">SEND</button>

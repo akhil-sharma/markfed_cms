@@ -7,6 +7,40 @@ use PHPMailer\PHPMailer\Exception;
 //Load composer's autoloader
 require 'vendor/autoload.php';
 
+//attachment checker code
+$finalLink = "";
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["attachment"]["name"]);
+$uploadOk = 1;
+
+// Check if file already exists
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+// Check for empty file
+if ($_FILES["attachment"]["size"] == 0) {
+    echo "Sorry, your file is surprisingly unnecessarily small.";
+    $uploadOk = 0;
+}
+// Check file size
+if ($_FILES["attachment"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["attachment"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["attachment"]["name"]). " has been uploaded.";
+        $finalLink = $target_file; 
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+
 //retrieving variables from $_POST
 //email
 $emailList = explode(";", $_POST['email']);
@@ -45,7 +79,12 @@ try {
     	$mail->addCC($ccEmailList[$i]);
     }
 
-    $mail->addReplyTo('info@example.com', 'Information');
+    //Attachments
+    if($uploadOk == 1){
+        $mail->addAttachment($finalLink);
+    }
+
+    $mail->addReplyTo('akhil.infinite@live.in', 'Carnal');
 
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML

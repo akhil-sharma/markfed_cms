@@ -1,12 +1,21 @@
+<?php
+
+session_start();
+if(isset($_SESSION['username']))
+{
+  ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   <link rel="stylesheet" href="css/style.css">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="richtext.min.css">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script src="jquery.richtext.js"></script>
@@ -21,15 +30,13 @@
 	
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  
+  <link rel="stylesheet" href="richtext.min.css">
 </head>
 <body>
 	<section>
 <nav class="navbar navbar-inverse" style="width: 100vmax;">
   <div class="container">
-    <!-- <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div> -->
+    
     <ul class="nav navbar-nav">
       <li><a href="index.php">Home</a></li>
       
@@ -59,13 +66,13 @@
 <form style="margin-top: 7%;" action="sendmail.php" method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <label for="exampleFormControlInput1">Email address (To):</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
   </div>
 
 
   <div class="form-group">
     <label for="exampleFormControlInput1">Cc:</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="cc">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="cc">
   </div>
 
   <div class="form-group">
@@ -73,15 +80,13 @@
     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Email Subject" name="subject">
   </div>
   
-  <div class="form-group">
+  <div class="form-group page-wrapper box-content">
     <label for="exampleFormControlTextarea1">Body:</label>
     <textarea class="form-control content" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
   </div>
           
     <script>
-     $(document).ready(function() {
-     $('.content').richText();
-     });
+    $('.content').richText();
     </script>
 
 <hr>
@@ -99,3 +104,13 @@
 </div>
 </body>
 </html>
+
+
+<?php
+
+
+}else{
+   header("location:index.php");
+}
+
+?>

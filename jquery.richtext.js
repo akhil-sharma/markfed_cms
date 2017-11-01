@@ -373,15 +373,15 @@
             }
 
             /* uploads */
-            if(settings.imageUpload === true) {
+            if(settings.imageUpload === false) {
                 $toolbarList.append($toolbarElement.clone().append($btnImageUpload));
             }
-            if(settings.fileUpload === true) {
+            if(settings.fileUpload === false) {
                 $toolbarList.append($toolbarElement.clone().append($btnFileUpload));
             }
 
             /* media */
-            if(settings.videoEmbed === true) {
+            if(settings.videoEmbed === false) {
                 $toolbarList.append($toolbarElement.clone().append($btnVideoEmbed));
             }
 
@@ -390,7 +390,7 @@
                 $toolbarList.append($toolbarElement.clone().append($btnURLs));
             }
 
-            if(settings.table === true) {
+            if(settings.table === false) {
                 $toolbarList.append($toolbarElement.clone().append($btnTable));
             }
 
@@ -515,297 +515,297 @@
         });
 
         // embedding video
-        $(document).on("click", "#richText-Video button.btn", function(event) {
-            event.preventDefault();
-            var $button = $(this);
-            var $form = $button.parent('.richText-form-item').parent('.richText-form');
-            if($form.attr("data-editor") === editorID) {
-                // only for the currently selected editor
-                var url = $form.find('input#videoURL').val();
-                var size = $form.find('select#size').val();
+        // $(document).on("click", "#richText-Video button.btn", function(event) {
+        //     event.preventDefault();
+        //     var $button = $(this);
+        //     var $form = $button.parent('.richText-form-item').parent('.richText-form');
+        //     if($form.attr("data-editor") === editorID) {
+        //         // only for the currently selected editor
+        //         var url = $form.find('input#videoURL').val();
+        //         var size = $form.find('select#size').val();
 
-                if(!url) {
-                    // no url set
-                    $form.prepend($('<div />', {style: 'color:red;display:none;', class: 'form-item is-error', text: 'Please enter an URL'}));
-                    $form.children('.form-item.is-error').slideDown();
-                    setTimeout(function() {
-                        $form.children('.form-item.is-error').slideUp(function () {
-                            $(this).remove();
-                        });
-                    }, 5000);
-                } else {
-                    // write html in editor
-                    var html = '';
-                    html = getVideoCode(url, size);
-                    if(!html) {
-                        $form.prepend($('<div />', {style: 'color:red;display:none;', class: 'form-item is-error', text: 'Video URL not supported'}));
-                        $form.children('.form-item.is-error').slideDown();
-                        setTimeout(function() {
-                            $form.children('.form-item.is-error').slideUp(function () {
-                                $(this).remove();
-                            });
-                        }, 5000);
-                    } else {
-                        if(settings.useSingleQuotes === true) {
+        //         if(!url) {
+        //             // no url set
+        //             $form.prepend($('<div />', {style: 'color:red;display:none;', class: 'form-item is-error', text: 'Please enter an URL'}));
+        //             $form.children('.form-item.is-error').slideDown();
+        //             setTimeout(function() {
+        //                 $form.children('.form-item.is-error').slideUp(function () {
+        //                     $(this).remove();
+        //                 });
+        //             }, 5000);
+        //         } else {
+        //             // write html in editor
+        //             var html = '';
+        //             html = getVideoCode(url, size);
+        //             if(!html) {
+        //                 $form.prepend($('<div />', {style: 'color:red;display:none;', class: 'form-item is-error', text: 'Video URL not supported'}));
+        //                 $form.children('.form-item.is-error').slideDown();
+        //                 setTimeout(function() {
+        //                     $form.children('.form-item.is-error').slideUp(function () {
+        //                         $(this).remove();
+        //                     });
+        //                 }, 5000);
+        //             } else {
+        //                 if(settings.useSingleQuotes === true) {
 
-                        } else {
+        //                 } else {
 
-                        }
-                        restoreSelection(editorID);
-                        pasteHTMLAtCaret(html);
-                        updateTextarea();
-                        // reset input values
-                        $form.find('input#videoURL').val('');
-                        $('.richText-toolbar li.is-selected').removeClass("is-selected");
-                    }
-                }
-            }
-        });
+        //                 }
+        //                 restoreSelection(editorID);
+        //                 pasteHTMLAtCaret(html);
+        //                 updateTextarea();
+        //                 // reset input values
+        //                 $form.find('input#videoURL').val('');
+        //                 $('.richText-toolbar li.is-selected').removeClass("is-selected");
+        //             }
+        //         }
+        //     }
+        // });
 
         // Resize images
-        $(document).on('mousedown', function(e) {
-            var $target = $(e.target);
-            if($target.prop("tagName") === "IMG" && $target.parents("#" + editorID)) {
-                startX = e.pageX;
-                startY = e.pageY;
-                startW = $target.innerWidth();
-                startH = $target.innerHeight();
+        // $(document).on('mousedown', function(e) {
+        //     var $target = $(e.target);
+        //     if($target.prop("tagName") === "IMG" && $target.parents("#" + editorID)) {
+        //         startX = e.pageX;
+        //         startY = e.pageY;
+        //         startW = $target.innerWidth();
+        //         startH = $target.innerHeight();
 
-                var left = $target.offset().left;
-                var right = $target.offset().left + $target.innerWidth();
-                var bottom = $target.offset().top + $target.innerHeight();
-                var top = $target.offset().top;
-                var resize = false;
-                $target.css({'cursor' : 'default'});
+        //         var left = $target.offset().left;
+        //         var right = $target.offset().left + $target.innerWidth();
+        //         var bottom = $target.offset().top + $target.innerHeight();
+        //         var top = $target.offset().top;
+        //         var resize = false;
+        //         $target.css({'cursor' : 'default'});
 
-                if(startY <= bottom && startY >= bottom-20 && startX >= right-20 && startX <= right) {
-                    // bottom right corner
-                    $resizeImage = $target;
-                    $resizeImage.css({'cursor' : 'nwse-resize'});
-                    resize = true;
-                }
+        //         if(startY <= bottom && startY >= bottom-20 && startX >= right-20 && startX <= right) {
+        //             // bottom right corner
+        //             $resizeImage = $target;
+        //             $resizeImage.css({'cursor' : 'nwse-resize'});
+        //             resize = true;
+        //         }
 
-                if((resize === true || $resizeImage) && !$resizeImage.data("width")) {
-                    // set initial image size and prevent dragging image while resizing
-                    $resizeImage.data("width", $target.parents("#" + editorID).innerWidth());
-                    $resizeImage.data("height", $target.parents("#" + editorID).innerHeight()*3);
-                    e.preventDefault();
-                } else if(resize === true || $resizeImage) {
-                    // resizing active, prevent other events
-                    e.preventDefault();
-                } else {
-                    // resizing disabled, allow dragging image
-                    $resizeImage = null;
-                }
+        //         if((resize === true || $resizeImage) && !$resizeImage.data("width")) {
+        //             // set initial image size and prevent dragging image while resizing
+        //             $resizeImage.data("width", $target.parents("#" + editorID).innerWidth());
+        //             $resizeImage.data("height", $target.parents("#" + editorID).innerHeight()*3);
+        //             e.preventDefault();
+        //         } else if(resize === true || $resizeImage) {
+        //             // resizing active, prevent other events
+        //             e.preventDefault();
+        //         } else {
+        //             // resizing disabled, allow dragging image
+        //             $resizeImage = null;
+        //         }
                 
-            }
-        });
-        $(document)
-            .mouseup(function(){
-                if($resizeImage) {
-                    $resizeImage.css({'cursor' : 'default'});
-                }
-                $resizeImage = null;
-            })
-            .mousemove(function(e){
-                if($resizeImage!==null){
-                    var maxWidth = $resizeImage.data('width');
-                    var currentWidth = $resizeImage.width();
-                    var maxHeight = $resizeImage.data('height');
-                    var currentHeight = $resizeImage.height();
-                    if((startW + e.pageX-startX) <= maxWidth && (startH + e.pageY-startY) <= maxHeight) {
-                        // only resize if new size is smaller than the original image size
-                        $resizeImage.innerWidth (startW + e.pageX-startX); // only resize width to adapt height proportionally
-                        // $box.innerHeight(startH + e.pageY-startY);
-                        updateTextarea();
-                    } else if((startW + e.pageX-startX) <= currentWidth && (startH + e.pageY-startY) <= currentHeight) {
-                        // only resize if new size is smaller than the previous size
-                        $resizeImage.innerWidth (startW + e.pageX-startX); // only resize width to adapt height proportionally
-                        updateTextarea();
-                    }
-                }
-            });
+        //     }
+        // });
+        // $(document)
+        //     .mouseup(function(){
+        //         if($resizeImage) {
+        //             $resizeImage.css({'cursor' : 'default'});
+        //         }
+        //         $resizeImage = null;
+        //     })
+        //     .mousemove(function(e){
+        //         if($resizeImage!==null){
+        //             var maxWidth = $resizeImage.data('width');
+        //             var currentWidth = $resizeImage.width();
+        //             var maxHeight = $resizeImage.data('height');
+        //             var currentHeight = $resizeImage.height();
+        //             if((startW + e.pageX-startX) <= maxWidth && (startH + e.pageY-startY) <= maxHeight) {
+        //                 // only resize if new size is smaller than the original image size
+        //                 $resizeImage.innerWidth (startW + e.pageX-startX); // only resize width to adapt height proportionally
+        //                 // $box.innerHeight(startH + e.pageY-startY);
+        //                 updateTextarea();
+        //             } else if((startW + e.pageX-startX) <= currentWidth && (startH + e.pageY-startY) <= currentHeight) {
+        //                 // only resize if new size is smaller than the previous size
+        //                 $resizeImage.innerWidth (startW + e.pageX-startX); // only resize width to adapt height proportionally
+        //                 updateTextarea();
+        //             }
+        //         }
+        //     });
 
         // adding URL
-        $(document).on("click", "#richText-URL button.btn", function(event) {
-            event.preventDefault();
-            var $button = $(this);
-            var $form = $button.parent('.richText-form-item').parent('.richText-form');
-            if($form.attr("data-editor") === editorID) {
-                // only for currently selected editor
-                var url = $form.find('input#url').val();
-                var text = $form.find('input#urlText').val();
-                var target = $form.find('#openIn').val();
+        // $(document).on("click", "#richText-URL button.btn", function(event) {
+        //     event.preventDefault();
+        //     var $button = $(this);
+        //     var $form = $button.parent('.richText-form-item').parent('.richText-form');
+        //     if($form.attr("data-editor") === editorID) {
+        //         // only for currently selected editor
+        //         var url = $form.find('input#url').val();
+        //         var text = $form.find('input#urlText').val();
+        //         var target = $form.find('#openIn').val();
 
-                // set default values
-                if(!target) {
-                    target = '_self';
-                }
-                if(!text) {
-                    text = url;
-                }
-                if(!url) {
-                    // no url set
-                    $form.prepend($('<div />', {style: 'color:red;display:none;', class: 'form-item is-error', text: 'Please enter an URL'}));
-                    $form.children('.form-item.is-error').slideDown();
-                    setTimeout(function() {
-                        $form.children('.form-item.is-error').slideUp(function () {
-                            $(this).remove();
-                        });
-                    }, 5000);
-                } else {
-                    // write html in editor
-                    var html = '';
-                    if(settings.useSingleQuotes === true) {
-                        html = "<a href='" + url + "' target='" + target + "'>" + text + "</a>";
-                    } else {
-                        html = '<a href="' + url + '" target="' + target + '">' + text + '</a>';
-                    }
-                    restoreSelection(editorID);
-                    pasteHTMLAtCaret(html);
-                    // reset input values
-                    $form.find('input#url').val('');
-                    $form.find('input#urlText').val('');
-                    $('.richText-toolbar li.is-selected').removeClass("is-selected");
-                }
-            }
-        });
+        //         // set default values
+        //         if(!target) {
+        //             target = '_self';
+        //         }
+        //         if(!text) {
+        //             text = url;
+        //         }
+        //         if(!url) {
+        //             // no url set
+        //             $form.prepend($('<div />', {style: 'color:red;display:none;', class: 'form-item is-error', text: 'Please enter an URL'}));
+        //             $form.children('.form-item.is-error').slideDown();
+        //             setTimeout(function() {
+        //                 $form.children('.form-item.is-error').slideUp(function () {
+        //                     $(this).remove();
+        //                 });
+        //             }, 5000);
+        //         } else {
+        //             // write html in editor
+        //             var html = '';
+        //             if(settings.useSingleQuotes === true) {
+        //                 html = "<a href='" + url + "' target='" + target + "'>" + text + "</a>";
+        //             } else {
+        //                 html = '<a href="' + url + '" target="' + target + '">' + text + '</a>';
+        //             }
+        //             restoreSelection(editorID);
+        //             pasteHTMLAtCaret(html);
+        //             // reset input values
+        //             $form.find('input#url').val('');
+        //             $form.find('input#urlText').val('');
+        //             $('.richText-toolbar li.is-selected').removeClass("is-selected");
+        //         }
+        //     }
+        // });
 
-        // adding image
-        $(document).on("click", "#richText-Image button.btn", function(event) {
-            event.preventDefault();
-            var $button = $(this);
-            var $form = $button.parent('.richText-form-item').parent('.richText-form');
-            if($form.attr("data-editor") === editorID) {
-                // only for currently selected editor
-                var url = $form.find('#imageURL').val();
-                var align = $form.find('select#align').val();
+        // // adding image
+        // $(document).on("click", "#richText-Image button.btn", function(event) {
+        //     event.preventDefault();
+        //     var $button = $(this);
+        //     var $form = $button.parent('.richText-form-item').parent('.richText-form');
+        //     if($form.attr("data-editor") === editorID) {
+        //         // only for currently selected editor
+        //         var url = $form.find('#imageURL').val();
+        //         var align = $form.find('select#align').val();
 
-                // set default values
-                if(!align) {
-                    align = 'center';
-                }
-                if(!url) {
-                    // no url set
-                    $form.prepend($('<div />', {style: 'color:red;display:none;', class: 'form-item is-error', text: 'Please select an image.'}));
-                    $form.children('.form-item.is-error').slideDown();
-                    setTimeout(function() {
-                        $form.children('.form-item.is-error').slideUp(function () {
-                            $(this).remove();
-                        });
-                    }, 5000);
-                } else {
-                    // write html in editor
-                    var html = '';
-                    if(settings.useSingleQuotes === true) {
-                        if(align === "center") {
-                            html = "<div style='text-align:center;'><img src='" + url + "'></div>";
-                        } else {
-                            html = "<img src='" + url + "' align='" + align + "'>";
-                        }
-                    } else {
-                        if(align === "center") {
-                            html = '<div style="text-align:center;"><img src="' + url + '"></div>';
-                        } else {
-                            html = '<img src="' + url + '" align="' + align + '">';
-                        }
-                    }
-                    restoreSelection(editorID);
-                    pasteHTMLAtCaret(html);
-                    // reset input values
-                    $form.find('input#imageURL').val('');
-                    $('.richText-toolbar li.is-selected').removeClass("is-selected");
-                }
-            }
-        });
+        //         // set default values
+        //         if(!align) {
+        //             align = 'center';
+        //         }
+        //         if(!url) {
+        //             // no url set
+        //             $form.prepend($('<div />', {style: 'color:red;display:none;', class: 'form-item is-error', text: 'Please select an image.'}));
+        //             $form.children('.form-item.is-error').slideDown();
+        //             setTimeout(function() {
+        //                 $form.children('.form-item.is-error').slideUp(function () {
+        //                     $(this).remove();
+        //                 });
+        //             }, 5000);
+        //         } else {
+        //             // write html in editor
+        //             var html = '';
+        //             if(settings.useSingleQuotes === true) {
+        //                 if(align === "center") {
+        //                     html = "<div style='text-align:center;'><img src='" + url + "'></div>";
+        //                 } else {
+        //                     html = "<img src='" + url + "' align='" + align + "'>";
+        //                 }
+        //             } else {
+        //                 if(align === "center") {
+        //                     html = '<div style="text-align:center;"><img src="' + url + '"></div>';
+        //                 } else {
+        //                     html = '<img src="' + url + '" align="' + align + '">';
+        //                 }
+        //             }
+        //             restoreSelection(editorID);
+        //             pasteHTMLAtCaret(html);
+        //             // reset input values
+        //             $form.find('input#imageURL').val('');
+        //             $('.richText-toolbar li.is-selected').removeClass("is-selected");
+        //         }
+        //     }
+        // });
 
         // adding file
-        $(document).on("click", "#richText-File button.btn", function(event) {
-            event.preventDefault();
-            var $button = $(this);
-            var $form = $button.parent('.richText-form-item').parent('.richText-form');
-            if($form.attr("data-editor") === editorID) {
-                // only for currently selected editor
-                var url = $form.find('#fileURL').val();
-                var text = $form.find('#fileText').val();
+        // $(document).on("click", "#richText-File button.btn", function(event) {
+        //     event.preventDefault();
+        //     var $button = $(this);
+        //     var $form = $button.parent('.richText-form-item').parent('.richText-form');
+        //     if($form.attr("data-editor") === editorID) {
+        //         // only for currently selected editor
+        //         var url = $form.find('#fileURL').val();
+        //         var text = $form.find('#fileText').val();
 
-                // set default values
-                if(!text) {
-                    text = url;
-                }
-                if(!url) {
-                    // no url set
-                    $form.prepend($('<div />', {style: 'color:red;display:none;', class: 'form-item is-error', text: 'Please select a file.'}));
-                    $form.children('.form-item.is-error').slideDown();
-                    setTimeout(function() {
-                        $form.children('.form-item.is-error').slideUp(function () {
-                            $(this).remove();
-                        });
-                    }, 5000);
-                } else {
-                    // write html in editor
-                    var html = '';
-                    if(settings.useSingleQuotes === true) {
-                        html = "<a href='" + url + "' target='_blank'>" + text + "</a>";
-                    } else {
-                        html = '<a href="' + url + '" target="_blank">' + text + '</a>';
-                    }
-                    restoreSelection(editorID);
-                    pasteHTMLAtCaret(html);
-                    // reset input values
-                    $form.find('input#fileURL').val('');
-                    $form.find('input#fileText').val('');
-                    $('.richText-toolbar li.is-selected').removeClass("is-selected");
-                }
-            }
-        });
+        //         // set default values
+        //         if(!text) {
+        //             text = url;
+        //         }
+        //         if(!url) {
+        //             // no url set
+        //             $form.prepend($('<div />', {style: 'color:red;display:none;', class: 'form-item is-error', text: 'Please select a file.'}));
+        //             $form.children('.form-item.is-error').slideDown();
+        //             setTimeout(function() {
+        //                 $form.children('.form-item.is-error').slideUp(function () {
+        //                     $(this).remove();
+        //                 });
+        //             }, 5000);
+        //         } else {
+        //             // write html in editor
+        //             var html = '';
+        //             if(settings.useSingleQuotes === true) {
+        //                 html = "<a href='" + url + "' target='_blank'>" + text + "</a>";
+        //             } else {
+        //                 html = '<a href="' + url + '" target="_blank">' + text + '</a>';
+        //             }
+        //             restoreSelection(editorID);
+        //             pasteHTMLAtCaret(html);
+        //             // reset input values
+        //             $form.find('input#fileURL').val('');
+        //             $form.find('input#fileText').val('');
+        //             $('.richText-toolbar li.is-selected').removeClass("is-selected");
+        //         }
+        //     }
+        // });
 
 
         // adding table
-        $(document).on("click", "#richText-Table button.btn", function(event) {
-            event.preventDefault();
-            var $button = $(this);
-            var $form = $button.parent('.richText-form-item').parent('.richText-form');
-            if($form.attr("data-editor") === editorID) {
-                // only for currently selected editor
-                var rows = $form.find('input#tableRows').val();
-                var columns = $form.find('input#tableColumns').val();
+        // $(document).on("click", "#richText-Table button.btn", function(event) {
+        //     event.preventDefault();
+        //     var $button = $(this);
+        //     var $form = $button.parent('.richText-form-item').parent('.richText-form');
+        //     if($form.attr("data-editor") === editorID) {
+        //         // only for currently selected editor
+        //         var rows = $form.find('input#tableRows').val();
+        //         var columns = $form.find('input#tableColumns').val();
 
-                // set default values
-                if(!rows || rows <= 0) {
-                    rows = 2;
-                }
-                if(!columns || columns <= 0) {
-                    columns = 2;
-                }
+        //         // set default values
+        //         if(!rows || rows <= 0) {
+        //             rows = 2;
+        //         }
+        //         if(!columns || columns <= 0) {
+        //             columns = 2;
+        //         }
                 
-                // generate table
-                var html = '';
-                if(settings.useSingleQuotes === true) {
-                    html = "<table class='table-1'><tbody>";
-                } else {
-                    html = '<table class="table-1"><tbody>';
-                }
-                for(var i = 1; i <= rows; i++) {
-                    // start new row
-                    html += '<tr>';
-                    for(var n = 1; n <= columns; n++) {
-                        // start new column in row
-                        html += '<td> </td>';
-                    }
-                    html += '</tr>';
-                }
-                html += '</tbod></table>';
+        //         // generate table
+        //         var html = '';
+        //         if(settings.useSingleQuotes === true) {
+        //             html = "<table class='table-1'><tbody>";
+        //         } else {
+        //             html = '<table class="table-1"><tbody>';
+        //         }
+        //         for(var i = 1; i <= rows; i++) {
+        //             // start new row
+        //             html += '<tr>';
+        //             for(var n = 1; n <= columns; n++) {
+        //                 // start new column in row
+        //                 html += '<td> </td>';
+        //             }
+        //             html += '</tr>';
+        //         }
+        //         html += '</tbod></table>';
 
-                // write html in editor
-                restoreSelection(editorID);
-                pasteHTMLAtCaret(html);
-                // reset input values
-                $form.find('input#tableColumns').val('');
-                $form.find('input#tableRows').val('');
-                $('.richText-toolbar li.is-selected').removeClass("is-selected");
-            }
-        });
+        //         // write html in editor
+        //         restoreSelection(editorID);
+        //         pasteHTMLAtCaret(html);
+        //         // reset input values
+        //         $form.find('input#tableColumns').val('');
+        //         $form.find('input#tableRows').val('');
+        //         $('.richText-toolbar li.is-selected').removeClass("is-selected");
+        //     }
+        // });
 
         // opening / closing toolbar dropdown
         $(document).on("click", function(event) {

@@ -205,7 +205,7 @@ if ($result->num_rows > 0) {
 ?>
         <tr style="padding: 1%; margin:1%;">
           
-          <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["file_number"]; ?></td>
+         <td style="padding:1%;"> <?php echo "<a href=\"report.php?fileNumber=".$row['file_number']."\" target=\"_blank\">".$row['file_number']."</a>";?> </td>
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["case_number"]; ?></td>
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["year"]; ?></td>
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["case_type"]; ?></td>
@@ -275,7 +275,7 @@ if ($result->num_rows > 0) {
         <tr style="padding: 1%; margin:1%;">
         	<td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["time"]; ?></td>
           
-          <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["file_number"]; ?></td>
+          <td style="padding:1%;"> <?php echo "<a href=\"report.php?fileNumber=".$row['file_number']."\" target=\"_blank\">".$row['file_number']."</a>";?> </td>
           
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["username"]; ?></td>
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["user_group"]; ?></td>
@@ -334,8 +334,7 @@ if ($result->num_rows > 0) {
           <th style="padding-left: 1vmax; padding-right: 1vmax;">Decision</th>
           <th style="padding-left: 1vmax; padding-right: 1vmax;">Description</th>
           <th style="padding-left: 1vmax; padding-right: 1vmax;">Next Hearing On</th>
-          <th style="padding-left: 1vmax; padding-right: 1vmax;">Order File</th>
-          <th style="padding-left: 1vmax; padding-right: 1vmax;">Order File Type</th>
+          
           
         </tr>
 
@@ -346,7 +345,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 ?>
         <tr style="padding: 1%; margin:1%;">
-          <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["file_number"]; ?></td>
+          <td style="padding:1%;"> <?php echo "<a href=\"report.php?fileNumber=".$row['file_number']."\" target=\"_blank\">".$row['file_number']."</a>";?> </td>
           
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["proceeding_number"]; ?></td>
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["proceeding_date"]; ?></td>
@@ -354,8 +353,7 @@ if ($result->num_rows > 0) {
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["description"]; ?></td>
 
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["next_hearing_on"]; ?></td>
-          <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["order_file"]; ?></td>
-          <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["order_file_type"]; ?></td>
+         
           
          
         </tr>
@@ -417,7 +415,8 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 ?>
         <tr style="padding: 1%; margin:1%;">
-          <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["file_number"]; ?></td>
+          <td style="padding:1%;"> <?php echo "<a href=\"report.php?fileNumber=".$row['file_number']."\" target=\"_blank\">".$row['file_number']."</a>";?> </td>
+
           
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["case_filed_on"]; ?></td>
           
@@ -486,7 +485,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 ?>
         <tr style="padding: 1%; margin:1%;">
-          <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["file_number"]; ?></td>
+         <td style="padding:1%;"> <?php echo "<a href=\"report.php?fileNumber=".$row['file_number']."\" target=\"_blank\">".$row['file_number']."</a>";?> </td>
           
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["proceeding_number"]; ?></td>
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["proceeding_date"]; ?></td>
@@ -627,7 +626,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 ?>
         <tr style="padding: 1%; margin:1%;">
-          <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["file_number"]; ?></td>
+          <td style="padding:1%;"> <?php echo "<a href=\"report.php?fileNumber=".$row['file_number']."\" target=\"_blank\">".$row['file_number']."</a>";?> </td>
           
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["petitioner_name"]; ?></td>
           <td style="padding-left: 2vmax; padding-right: 1vmax;"><?php echo $row["petitioner_email"]; ?></td>

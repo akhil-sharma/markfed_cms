@@ -103,5 +103,5 @@ try {
     echo 'Mailer Error: ' . $mail->ErrorInfo;
 }
 
- header("location:mail.php");
+ header('location:mail.php');
 ?>

@@ -2,7 +2,7 @@
 
 session_start();
 if(isset($_SESSION['username']))
-{$_SESSION['mail_status'] = "";
+{$_SESSION['mail_status'] = "_";
   ?>
 
 
@@ -58,7 +58,7 @@ if(isset($_SESSION['username']))
 		
 <div class="container">
 <form id="emailForm" style="margin-top: 7%;" action="sendmail.php" method="POST" enctype="multipart/form-data">
-    <div id="mail-status"><?php if($_SESSION['mail_status'] != ""){echo $_SESSION['mail_status'];}?></div>
+    <div id="mail-status"><?php if($_SESSION['mail_status'] != "_"){echo $_SESSION['mail_status'];}?></div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Email address (To):</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">

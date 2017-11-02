@@ -20,51 +20,6 @@ if(isset($_SESSION['username']))
 
     <script src="jquery.richtext.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function (e){
-            $("#emailForm").on('submit',(function(e){
-                e.preventDefault();
-                $('#loader-icon').show();
-                var valid;
-                valid = validateContact();
-                if(valid) {
-                    $.ajax({
-                        url: "sendmail.php",
-                        type: "POST",
-                        data:  new FormData(this),
-                        contentType: false,
-                        cache: false,
-                        processData:false,
-                        success: function(data){
-                            $("#mail-status").html(data);
-                            $('#loader-icon').hide();
-                        },
-                        error: function(){}
-
-                    });
-                }
-            }));
-
-            function validateContact() {
-                var valid = true;
-
-                if(!$("#subject").val()) {
-                    $("#subject-info").html("(required)");
-                    $("#subject").css('background-color','#FFFFDF');
-                    valid = false;
-                }
-                if(!$("#content").val()) {
-                    $("#content-info").html("(required)");
-                    $("#content").css('background-color','#FFFFDF');
-                    valid = false;
-                }
-
-                return valid;
-            }
-
-        });
-    </script>
-
 	<title>Admin Panel</title>
 
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -102,8 +57,7 @@ if(isset($_SESSION['username']))
 
 		
 <div class="container">
-<form id="emailForm" style="margin-top: 7%;" action="" method="POST">
-    <div id="loader-icon" style="display:none;"><img src="img/loader.gif" /></div>
+<form id="emailForm" style="margin-top: 7%;" action="sendmail.php" method="POST" enctype="multipart/form-data">
     <div id="mail-status"></div>
   <div class="form-group">
     <label for="exampleFormControlInput1">Email address (To):</label>
@@ -118,12 +72,12 @@ if(isset($_SESSION['username']))
 
   <div class="form-group">
     <label for="exampleFormControlInput1">Subject:</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1 subject" placeholder="Email Subject" name="subject">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Email Subject" name="subject">
   </div>
   
   <div class="form-group page-wrapper box-content">
     <label for="exampleFormControlTextarea1">Body:</label>
-    <textarea class="form-control content" id="exampleFormControlTextarea1 content" rows="5" name="body" placeholder="Email Body"></textarea>
+    <textarea class="form-control content" id="exampleFormControlTextarea1" rows="5" name="body" placeholder="Email Body"></textarea>
   </div>
           
     <script>

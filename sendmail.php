@@ -100,9 +100,9 @@ try {
     echo 'Message has been sent';
 } catch (Exception $e) {
     echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
+    //echo 'Mailer Error: ' . $mail->ErrorInfo;
 }
 
 
- header("location:mail.php");
+ //header("location:mail.php");
 ?>

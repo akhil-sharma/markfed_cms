@@ -32,7 +32,7 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["attachment"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["attachment"]["name"]). " has been uploaded.";
-        $finalLink = $target_file; 
+        $finalLink = $target_file;
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
@@ -71,17 +71,17 @@ try {
     //Recipients
     $mail->setFrom('aditya119sharma@gmial.com', 'Aditya');
     //Add a recipient/recipients
-    
-    for ($i=0; $i < $emailCount; $i++) { 
-    	$mail->addAddress($emailList[$i]);
+
+    for ($i=0; $i < $emailCount; $i++) {
+        $mail->addAddress($emailList[$i]);
     }
 
     if(!empty($_POST['cc'])){
-    //Add a recipient/recipients CC
-    for ($i=0; $i < $ccEmailCount; $i++) { 
-    	$mail->addCC($ccEmailList[$i]);
+        //Add a recipient/recipients CC
+        for ($i=0; $i < $ccEmailCount; $i++) {
+            $mail->addCC($ccEmailList[$i]);
+        }
     }
-}
 
     //Attachments
     if($uploadOk == 1 and !empty($_FILES['attachment'])){
@@ -103,5 +103,6 @@ try {
     echo 'Mailer Error: ' . $mail->ErrorInfo;
 }
 
- header('location:mail.php');
+
+header("location:mail.php");
 ?>

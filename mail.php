@@ -2,7 +2,7 @@
 
 session_start();
 if(isset($_SESSION['username']))
-{$_SESSION['mail_status'] = "_";
+{
   ?>
 
 
@@ -21,7 +21,13 @@ if(isset($_SESSION['username']))
     <script src="jquery.richtext.js"></script>
 
 	<title>Admin Panel</title>
+  
+  
 
+  
+  
+
+	
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="richtext.min.css">
@@ -36,6 +42,7 @@ if(isset($_SESSION['username']))
       
       <li><a href="#">Filter Based Search</a></li>
       <li><a href="upcoming.php">Upcoming Events</a></li>
+      <li><a href="userinfo.php">User Info</a></li>
       <li class="active"><a href="#">Mail</a></li>
     </ul>
     <div id="searchForm" class="navbar-form navbar-left">
@@ -57,8 +64,7 @@ if(isset($_SESSION['username']))
 
 		
 <div class="container">
-<form id="emailForm" style="margin-top: 7%;" action="sendmail.php" method="POST" enctype="multipart/form-data">
-    <div id="mail-status"><?php if($_SESSION['mail_status'] != "_"){echo $_SESSION['mail_status'];}?></div>
+<form style="margin-top: 7%;" action="sendmail.php" method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <label for="exampleFormControlInput1">Email address (To):</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">

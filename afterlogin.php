@@ -1,8 +1,14 @@
 <?php
 
-if($_SESSION['username']){?>
+if($_SESSION['username']){
+
+include 'connection.php';
+$setstatus="UPDATE `user_info` SET `status_web`='ONLINE' WHERE `username` = '$username'";
+$connection->query($setstatus);
+  ?>
 <html>
 <head>
+  <script type="text/javascript" src="js/snack.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   <link rel="stylesheet" href="css/style.css">
 	<meta charset="utf-8">
@@ -99,7 +105,7 @@ function openCity(evt, cityName) {
 
 
 </head>
-<body>
+<body onload="myFunction();">
 	
 
 
@@ -116,6 +122,7 @@ function openCity(evt, cityName) {
       
       <li><a href="filter.php">Filter Based Search</a></li>
       <li><a href="upcoming.php">Upcoming Events</a></li>
+      <li><a href="userinfo.php">User Info</a></li>
       <li><a href="mail.php">Mail</a></li>
     </ul>
     <div id="searchForm" class="navbar-form navbar-left">
@@ -149,7 +156,7 @@ function openCity(evt, cityName) {
   <button class="tablinks" onclick="openCity(event, 'DateInfo')">DateInfo</button>
   <button class="tablinks" onclick="openCity(event, 'LatestProceeding')">LatestProceeding</button>
   <button class="tablinks" onclick="openCity(event, 'Lawyer')">Lawyer</button>
-  <button class="tablinks" onclick="openCity(event, 'PetitionerRespondantInfo')">PetitionerRespondantInfo</button>
+  <button class="tablinks" onclick="openCity(event, 'PetitionerRespondentInfo')">PetitionerRespondentInfo</button>
   <button class="tablinks" onclick="openCity(event, 'CaseUpdateLog')">CaseUpdateLog</button>
   
 </div>
@@ -578,7 +585,7 @@ if ($result->num_rows > 0) {
 
 
 
-<div id="PetitionerRespondantInfo" class="tabcontent context">
+<div id="PetitionerRespondentInfo" class="tabcontent context">
 
 
 
@@ -654,6 +661,49 @@ if ($result->num_rows > 0) {
 </div></div>
 </div>
 </div>
+
+<?php
+
+if(!isset($_POST['days'])){
+
+$day_int = 1;
+  }
+if(isset($_POST['days'])){
+$day = $_POST['days'];
+$day_int = (int)$day;
+}
+?>
+
+
+<!-- Use a button to open the snackbar -->
+<!-- <button onclick="myFunction()">Show Snackbar</button> -->
+
+<!-- The actual snackbar -->
+<?php
+$sql = "SELECT file_number, next_hearing_on, lawyer, proceeding_number FROM latest_proceeding natural join case_info WHERE next_hearing_on <= (DATE_ADD(CURRENT_DATE,INTERVAL + $day_int DAY)) and next_hearing_on >= CURDATE()";
+
+$result = $connection->query($sql);
+
+if ($result->num_rows > 0) {
+  
+  while($row = $result->fetch_assoc()){
+
+?>
+
+
+<div id="snackbar">Case of File Number: <?php echo $row['file_number']; ?> appraoching on <?php echo $row['next_hearing_on'];?><br></div>
+
+<?php
+}
+}else{
+  ?>
+   <div id="snackbar">No upcoming Cases....<br> Click on <a href="upcoming.php" style="color: aqua;">Upcoming Events </a>to know more.</div>
+  <?php
+}
+
+?>
+
+
 </body>
 </html>
 

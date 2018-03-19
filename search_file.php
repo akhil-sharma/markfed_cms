@@ -1,5 +1,5 @@
 <?php
-define('DB_SERVER', '52.39.128.239');
+define('DB_SERVER', '34.213.123.39');
 define('DB_USER', 'root');
 define('DB_PASSWORD', 'infinitynkr@321');
 define('DB_NAME', 'markfed');

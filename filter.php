@@ -57,6 +57,7 @@ $result ='';
 
 <html>
 <head>
+  <script src="js/snack.js"></script>
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" /> 
@@ -152,7 +153,7 @@ function findString () {
 
 
 </head>
-<body>
+<body onload="myFunction();">
 	
 
 
@@ -169,6 +170,7 @@ function findString () {
       
       <li class="active"><a href="#">Filter Based Search</a></li>
       <li><a href="upcoming.php">Upcoming Events</a></li>
+      <li><a href="userinfo.php">User Info</a></li>
       <li><a href="mail.php">Mail</a></li>
     </ul>
     <div id="searchForm" class="navbar-form navbar-left">
@@ -302,6 +304,49 @@ $("#myButton").click(function() {
 </script>
 
 
+
+
+
+<?php
+
+if(!isset($_POST['days'])){
+
+$day_int = 1;
+  }
+if(isset($_POST['days'])){
+$day = $_POST['days'];
+$day_int = (int)$day;
+}
+?>
+
+
+<!-- Use a button to open the snackbar -->
+<!-- <button onclick="myFunction()">Show Snackbar</button> -->
+
+<!-- The actual snackbar -->
+<?php
+$sql = "SELECT file_number, next_hearing_on, lawyer, proceeding_number FROM latest_proceeding natural join case_info WHERE next_hearing_on <= (DATE_ADD(CURRENT_DATE,INTERVAL + $day_int DAY)) and next_hearing_on >= CURDATE()";
+
+$result = $connection->query($sql);
+
+if ($result->num_rows > 0) {
+  
+  while($row = $result->fetch_assoc()){
+
+?>
+
+
+<div id="snackbar">Case of File Number: <?php echo $row['file_number']; ?> appraoching on <?php echo $row['next_hearing_on'];?><br></div>
+
+<?php
+}
+}else{
+  ?>
+   <div id="snackbar">No upcoming Cases....<br> Click on <a href="upcoming.php" style="color: aqua;">Upcoming Events </a>to know more.</div>
+  <?php
+}
+
+?>
 
 
 
